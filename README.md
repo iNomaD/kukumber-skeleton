@@ -1,7 +1,7 @@
 # Kukumber — Getting started with Cucumber in Kotlin
 
 My team is creating an application in Kotlin. To make development of Cucumber tests easier, we decided to also use Cucumber-jvm with Kotlin instead of Java.
-Fortunately, it is possible to use [cucumber-java8 in Kotlin](https://github.com/cucumber/cucumber-jvm/tree/master/kotlin-java8).
+Fortunately, it is possible to use [cucumber-java8](https://github.com/cucumber/cucumber-jvm/tree/master/java8) due to [Java 8 Bindings for Kotlin](https://github.com/cucumber/cucumber-jvm/tree/master/kotlin-java8).
 
 ## Prerequisites
 
@@ -16,7 +16,7 @@ We use Maven, so we added the following dependencies to our pom.xml:
 
 ```xml
     <properties>
-        <cucumber.version>2.3.1</cucumber.version>
+        <cucumber.version>5.6.0</cucumber.version>
     </properties>
 
     <dependencies>
