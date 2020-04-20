@@ -8,6 +8,8 @@ class StepDefs : En {
     lateinit var order: Order
     lateinit var supplier: Supplier
     private val dispatchDateService: DispatchDateService = DispatchDateService()
+    private val orderService = OrderService()
+    private val supplierService = SupplierService()
 
     init {
         Given("I have Order") {
@@ -20,15 +22,17 @@ class StepDefs : En {
             order.products = dataTable.asLists().map { Product(it[0], it[1]) }
         }
         Given("Order is collected") {
-            dispatchDateService.collectOrder(order)
+            orderService.collectOrder(order)
         }
         When("Supplier {string} has lead time {int} day") { supplierId: String, days: Int ->
-            //todo add supplier to dispatch service
             supplier = Supplier(supplierId, days)
+            supplierService.addSupplier(supplier)
         }
         Then("Order dispatched date is {int}\\/{int}\\/{int}") { day: Int, month: Int, year: Int ->
             assertEquals(LocalDate.of(year, month, day), dispatchDateService.calcDispatchDate("order1"))
         }
 
     }
+
+    //ToDo: Create OrderBuilder
 }
